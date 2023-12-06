@@ -1,0 +1,85 @@
+----Install/initialisation  LARAVEL ----
+
+composer create-project laravel/laravel:^9.0 laravelBlog
+composer create-project --prefer-dist laravel/laravel laravelBlog
+
+composer install // если нет папки VENDOR или не установлены какие нибудь зависимости
+composer update //обновление пакетов
+нужные зависимости прописаны в файле composer.json
+
+----.htaccess----
+RewriteEngine On
+RewriteRule (.*) public/§1
+
+----cd/---
+ cd  OSPanel/domains/laravelBlog
+
+ php artisan cache:clear # Очистка кэша приложения
+ php artisan route:clear # очистка кэша маршрутов
+ php artisan view:clear # Очистка кэша шаблонов
+ php artisan config:clear # Очистка кэша конфигурации
+
+----Модель ----
+php artisan make:model Category -m
+php artisan make:model Post -m
+php artisan make:model Comment -m
+php artisan make:model Tag -m
+
+---Seeders----
+php artisan make:seeder CategoryTableSeeder
+php artisan make:seeder PostTableSeeder
+php artisan make:seeder TagTableSeeder
+php artisan make:seeder CommentTableSeeder
+php artisan make:seeder PostTagTableSeeder
+php artisan make:seeder UserTableSeeder
+
+---factory---
+php artisan make:factory CategoryFactory --model=Category
+php artisan make:factory PostFactory --model=Post
+php artisan make:factory TagFactory --model=Tag
+php artisan make:factory CommentFactory --model=Comment
+
+!!!ps. I did not do!!!
+
+----BD migration-----
+php artisan migrate:fresh --seed
+
+php artisan migrate
+php artisan migrate:reset
+php artisan migrate:refresh
+
+----Controllers-----
+php artisan make:controller PostController -r
+
+php artisan make:controller ClientController --api
+php artisan make:controller ClientController --resource
+php artisan make:resource ClientsResource
+
+----Добавление данных и валидация-------
+php artisan make:request ClientStoreRequest
+
+---Routes---
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
+
+----просмотр всех route-----
+php artisan route:list
+
+------ storage:link----------
+php artisan storage:link
+
+-------ORM Laravel--------------
+recommendation (suositus) получение данных с бд
+Client::get();
+
+Узнать какие запросы были выполнены
+->toSql();
+
+обновлены данных
+Cient::find(1)-> update([
+'name' => 'Nikola'
+]);
+
+удаление элементов с бд
+Cient::find(1)->delete();
+User::find($id)->only('name', 'email');
