@@ -14,6 +14,6 @@ class CommentTableSeeder extends Seeder
     public function run(): void
     {
         // создать 200 комментариев
-        factory(Comment::class, 200)->create();
+        //factory(Comment::class, 200)->create();
     }
 }

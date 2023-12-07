@@ -12,7 +12,7 @@ class PostTagTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         foreach(Post::all() as $post) {
             foreach(Tag::all() as $tag) {
@@ -21,5 +21,6 @@ class PostTagTableSeeder extends Seeder
                 }
             }
         }
+
     }
 }

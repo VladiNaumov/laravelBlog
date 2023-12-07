@@ -11,9 +11,9 @@ class CategoryTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         // создать 12 категорий
-        factory(Category::class, 12)->create();
+       // factory(Category::class, 12)->create();
     }
 }

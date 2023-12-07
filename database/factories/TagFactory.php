@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
  */
-class CategoryFactory extends Factory
+class TagFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,11 +19,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $this->define(Category::class, function (Faker $faker) {
-            $name = $faker->realText(rand(40, 50));
+        $this->define(Tag::class, function (Faker $faker) {
+            $name = $faker->realText(rand(20, 30));
             return [
                 'name' => $name,
-                'content' => $faker->realText(rand(200, 500)),
                 'slug' => Str::slug($name),
             ];
         });

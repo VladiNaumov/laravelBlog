@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
@@ -35,10 +37,16 @@ class UserFactory extends Factory
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
+    public function unverified()
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
+        $this->define(User::class, function (Faker $faker) {
+            return [
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => Hash::make('qwerty'),
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+            ];
+        });
     }
 }
