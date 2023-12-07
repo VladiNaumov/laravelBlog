@@ -15,22 +15,13 @@ class IndexController extends Controller
      *
      * @return Application|Factory|View
      */
-
-    /*
     public function __invoke(Request $request) {
         return view('user.index');
     }
-    */
+
 
     public function index(){
-
       //return view('user.index');
       return view('layout.site');
-
   }
-
-
-
-
-
 }
