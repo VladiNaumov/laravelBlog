@@ -2,29 +2,27 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Category>
+ * @extends Factory<Tag>
  */
-class CategoryFactory extends Factory
+class TagFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function definition()
     {
-
             return [
                 'name' => fake()->name(),
-                'content'  => fake()->title(),
-                'slug' => fake()->slug(),
+                'slug' => fake()->unique()->slug(),
             ];
+
     }
 }
-

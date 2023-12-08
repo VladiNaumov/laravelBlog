@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+/**
+ * @method factory(string $class, int $int)
+ */
 class UserTableSeeder extends Seeder
 {
     /**
@@ -14,6 +16,6 @@ class UserTableSeeder extends Seeder
     public function run(): void
     {
         // создать 10 пользователей
-        factory(User::class, 10)->create();
+       User::factory()->count(10)->create();
     }
 }

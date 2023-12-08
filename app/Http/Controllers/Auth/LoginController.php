@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
@@ -35,14 +34,17 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+
             return redirect()
                 ->route('user.index')
                 ->with('success', 'Вы вошли в личный кабинет');
+
         }
 
         return redirect()
             ->route('auth.login')
             ->withErrors('Неверный логин или пароль');
+
     }
 
     /**
@@ -51,8 +53,10 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
+
         return redirect()
             ->route('auth.login')
             ->with('success', 'Вы вышли из личного кабинета');
+
     }
 }

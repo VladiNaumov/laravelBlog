@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
+
     public function __construct() {
         $this->middleware('guest');
     }

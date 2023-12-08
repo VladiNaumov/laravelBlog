@@ -19,7 +19,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/', [IndexController::class, 'welcome'])->name('index');
+//Route::get('/', [IndexController::class])->name('index');
+
+
+/*
+ * Личный кабинет пользователя
+ */
+Route::group([
+    'as' => 'user.', // имя маршрута, например user.index
+    'prefix' => 'user', // префикс маршрута, например user/index
+    'namespace' => 'User', // пространство имен контроллеров
+    'middleware' => ['auth'] // один или несколько посредников
+], function () {
+    /*
+    * Главная страница личного кабинета
+    */
+   Route::get('index', [IndexController::class, 'UserIndex'])->name('index');
+});
 
 
 /*
