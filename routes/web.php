@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| 1. Создание таблиц БД, наполнение тестовыми данными
+| 2. Регистрация и аутентификация, восстановление пароля
+| 3. Checkbox «Запомнить меня» и подтверждение адреса почты
+| 4. Роли и Права пользователей, трейт HasRolesAndPermissions
+| 5. Категории блога и популярные теги — меню в левой колонке
+|
+|
+|
+| https://tokmakov.msk.ru/blog/item/601
 |
 */
 
-// https://tokmakov.msk.ru/blog/item/601
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
