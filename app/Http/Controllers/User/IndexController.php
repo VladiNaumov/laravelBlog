@@ -17,10 +17,8 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {
         //return view('index', compact('users', 'root'));
-
-
+        return ' __invoke';
     }
-
 
     public function welcome()
     {
@@ -30,6 +28,7 @@ class IndexController extends Controller
 
     public function UserIndex(){
         return view('user.index');
+
     }
 
 
