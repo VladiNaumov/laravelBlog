@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CategoryTableSeeder extends Seeder
@@ -14,6 +14,8 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         // создать 12 категорий
-       // factory(Category::class, 12)->create();
+        Category::factory()->count(12)->create();
+
+
     }
 }

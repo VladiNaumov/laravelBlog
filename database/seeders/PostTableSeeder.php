@@ -15,6 +15,6 @@ class PostTableSeeder extends Seeder
     public function run(): void
     {
         // создать 50 постов блога
-       // factory(Post::class, 50)->create();
+        Post::factory()->count(50) ->create();
     }
 }

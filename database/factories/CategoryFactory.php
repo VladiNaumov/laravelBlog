@@ -15,17 +15,16 @@ class CategoryFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function definition()
     {
-        $this->define(Category::class, function (Faker $faker) {
-            $name = $faker->realText(rand(40, 50));
+
             return [
-                'name' => $name,
-                'content' => $faker->realText(rand(200, 500)),
-                'slug' => Str::slug($name),
+                'name' => fake()->name(),
+                'content'  => fake()->title(),
+                'slug' => fake()->slug(),
             ];
-        });
     }
 }
+

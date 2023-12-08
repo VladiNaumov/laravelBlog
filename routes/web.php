@@ -35,7 +35,7 @@ Route::group([
     /*
     * Главная страница личного кабинета
     */
-    Route::get('index', [IndexController::class])->name('index');
+   Route::get('index', [IndexController::class, 'UserIndex'])->name('index');
 });
 
 

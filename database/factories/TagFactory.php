@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
+ * @extends Factory<Tag>
  */
 class TagFactory extends Factory
 {
@@ -19,12 +19,10 @@ class TagFactory extends Factory
      */
     public function definition()
     {
-        $this->define(Tag::class, function (Faker $faker) {
-            $name = $faker->realText(rand(20, 30));
             return [
-                'name' => $name,
-                'slug' => Str::slug($name),
+                'name' => fake()->name(),
+                'slug' => fake()->unique()->slug(),
             ];
-        });
+
     }
 }
