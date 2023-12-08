@@ -15,9 +15,18 @@ class ComposerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        //
+
+    public function register() {
+        View::composer('layout.part.categories', function($view) {
+            static $items = null;
+            if (is_null($items)) {
+                $items = Category::all();
+            }
+            $view->with(['items' => $items]);
+        });
+        View::composer('layout.part.popular-tags', function($view) {
+            $view->with(['items' => Tag::popular()]);
+        });
     }
 
     /**
@@ -25,13 +34,22 @@ class ComposerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+
+    public function boot() {
         View::composer('layout.part.categories', function($view) {
-            $view->with(['items' => Category::roots()]);
+            static $first = true;
+            if ($first) {
+                $view->with(['items' => Category::hierarchy()]);
+            }
+            $first = false;
         });
         View::composer('layout.part.popular-tags', function($view) {
             $view->with(['items' => Tag::popular()]);
         });
     }
+
+
+
+
+
 }

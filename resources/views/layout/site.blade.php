@@ -67,16 +67,9 @@
     <div class="row">
         <div class="col-md-3">
             <h4>Категории блога</h4>
-            @include('layout.part.categories')
+            @include('layout.part.categories', ['parent' => 0])
             <h4>Популярные теги</h4>
             @include('layout.part.popular-tags')
-            <!--
-    <h4>Категории блога</h4>
-    <p>Здесь будут категории блога</p>
-    <h4>Популярные теги</h4>
-    <p>Здесь будут популярные теги</p>
-    -->
-
         </div>
         <div class="col-md-9">
             @if ($message = Session::get('success'))
