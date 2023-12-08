@@ -16,14 +16,12 @@ class IndexController extends Controller
 
     public function __invoke(Request $request)
     {
-        //return view('index', compact('users', 'root'));
-        return ' __invoke';
+        return 'index';
     }
 
-    public function welcome()
+    public function index()
     {
-      //return view('user.index');
-      return view('welcome');
+      return view('index');
     }
 
     public function UserIndex(){

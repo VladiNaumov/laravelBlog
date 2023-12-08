@@ -17,4 +17,19 @@ class Category extends Model
         'image',
     ];
 
+    /**
+     * Связь модели Category с моделью Post, позволяет получить
+     * все посты, размещенные в текущей категории
+     */
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Возвращает список корневых категорий блога
+     */
+    public static function roots() {
+        return self::where('parent_id', 0)->get();
+    }
+
 }
