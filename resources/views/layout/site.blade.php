@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<!-- menu start -->
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <!-- Логотип и кнопка «Гамбургер» -->
@@ -63,13 +64,15 @@
             </ul>
         </div>
     </nav>
-
+    <!-- menu end -->
     <div class="row">
         <div class="col-md-3">
+            <!-- боковая панель слева  -->
             <h4>Категории блога</h4>
             @include('layout.part.categories', ['parent' => 0])
             <h4>Популярные теги</h4>
             @include('layout.part.popular-tags')
+            <!--  end -->
         </div>
         <div class="col-md-9">
             @if ($message = Session::get('success'))
